@@ -153,7 +153,10 @@ WHERE contact_name = 'Bilbo Baggins'
   </details>
 
 ```SQL
-
+SELECT b.company_name, COUNT(o.ship_name)
+FROM orders o JOIN customers b
+ON b.company_name = o.ship_name
+GROUP BY b.company_name
 ```
 
 * [ ] ***list customers by contact name and the number of orders per contact name. Sort the list by the number of orders in descending order. _Jose Pavarotti_ should be at the top with 31 orders followed by _Roland Mendal_ with 30 orders. Last should be _Francisco Chang_ with 1 order***
@@ -164,7 +167,11 @@ WHERE contact_name = 'Bilbo Baggins'
   </details>
 
 ```SQL
-
+SELECT b.contact_name, COUNT(o.ship_name) as OrderCount
+FROM orders o JOIN customers b
+ON b.company_name = o.ship_name
+GROUP BY b.contact_name
+ORDER BY OrderCount DESC, OrderCount
 ```
 
 * [ ] ***list orders grouped by customer's city showing the number of orders per city. Returns 69 Records with _Aachen_ showing 6 orders and _Albuquerque_ showing 18 orders***
@@ -175,7 +182,11 @@ WHERE contact_name = 'Bilbo Baggins'
   </details>
 
 ```SQL
-
+SELECT b.city, COUNT(o.ship_city) as OrderCount
+FROM orders o JOIN customers b
+ON b.city = o.ship_city
+GROUP BY b.city
+ORDER BY OrderCount ASC, OrderCount
 ```
 
 ## Data Normalization
