@@ -93,7 +93,9 @@ ORDER BY order_date DESC, order_date
   </details>
 
 ```SQL
-
+SELECT company_name
+FROM suppliers
+WHERE length(company_name) > 20
 ```
 
 * [ ] ***find all customers that include the word 'MARKET' in the contact title. Should return 19 records***
@@ -106,7 +108,9 @@ ORDER BY order_date DESC, order_date
   </details>
 
 ```SQL
-
+SELECT contact_name, contact_title
+FROM customers
+WHERE upper(contact_title) LIKE '%MARKET%'
 ```
 
 * [ ] ***add a customer record for***
@@ -123,7 +127,8 @@ ORDER BY order_date DESC, order_date
   </details>
 
 ```SQL
-
+INSERT INTO customers(customer_id, company_name, contact_name, address, city, postal_code, country)
+VALUES('SHIRE', 'The Shire', 'Bilbo Baggins', '1 Hobbit-Hole', 'Bag End', '111', 'Middle Earth')
 ```
 
 * [ ] ***update _Bilbo Baggins_ record so that the postal code changes to _"11122"_***
@@ -134,7 +139,9 @@ ORDER BY order_date DESC, order_date
   </details>
 
 ```SQL
-
+UPDATE customers
+SET postal_code = '11122'
+WHERE contact_name = 'Bilbo Baggins'
 ```
 
 * [ ] ***list orders grouped and ordered by customer company name showing the number of orders per customer company name. _Rattlesnake Canyon Grocery_ should have 18 orders***
