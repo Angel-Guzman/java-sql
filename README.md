@@ -65,7 +65,10 @@ LIMIT 3
   </details>
 
 ```SQL
-
+SELECT contact_name
+FROM customers
+WHERE postal_code = '1010'
+LIMIT 3
 ```
 
 * [ ] ***list orders descending by the order date. The order with date 1998-05-06 should be at the top***
@@ -76,7 +79,9 @@ LIMIT 3
   </details>
 
 ```SQL
-
+SELECT order_date
+FROM orders
+ORDER BY order_date DESC, order_date
 ```
 
 * [ ] ***find all suppliers who have names longer than 20 characters. Returns 11 records***
